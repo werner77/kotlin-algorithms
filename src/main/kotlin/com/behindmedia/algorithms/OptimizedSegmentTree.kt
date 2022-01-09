@@ -3,7 +3,7 @@ package com.behindmedia.algorithms
 import kotlin.math.max
 import kotlin.math.min
 
-class OptimizedSegmentTree(val size: Int, initializer: (Int) -> Long = { 0L }) : SegmentTree {
+class OptimizedSegmentTree(val size: Int, initializer: (Int) -> Long = { 0L }) : RandomUpdateSegmentTree {
 
     constructor(array: LongArray) : this(array.size, { array[it] })
 
@@ -18,6 +18,10 @@ class OptimizedSegmentTree(val size: Int, initializer: (Int) -> Long = { 0L }) :
      */
     override fun query(range: IntRange): Long {
         return query(range.first, range.last)
+    }
+
+    override fun update(range: IntRange, diff: Long) {
+        update(range) { _, old -> old + diff }
     }
 
     override fun update(range: IntRange, value: (Int, Long) -> Long) {

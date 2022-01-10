@@ -10,7 +10,7 @@ class SegmentTreeTest {
 
     @Test
     fun randomUpdatesAndQuery() {
-        val sourceArray = LongArray(1_000_000) {
+        val sourceArray = LongArray(1_000_001) {
             random.nextLong(0, 100)
         }
         val tree1 = LazySegmentTree(sourceArray)
